@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./login.js"></script>
+</head>
+<body>
+
+  <div class="line">
+    <img src="/logo.png">
+  </div>
+  <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+    <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+    <buttom><a href="#" title="Cut" class="w3-bar-item w3-button">&#9986;</a></buttom>
+    <buttom><a href="#" title="Draw" class="w3-bar-item w3-button">&#9999;</a></buttom>
+    <buttom><a href="#" title="Net" class="w3-bar-item w3-button">&#127760;</a></buttom>
+    <buttom><a href="#" title="Random" class="w3-bar-item w3-button">&#127922;</a></buttom>
+  </div>
+  
+  <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
+
+<button class="btn2" onclick="document.getElementById('id01').style.display='block'" style="float: right;">Login</button>
+
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'"
+class="close" title="Close Modal">&times;</span>
+
+  <form id="login-form" class="modal-content animate">
+
+    <div class="containerOver">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" id="username" name="username" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" id="password" name="password" required>
+
+      <button class="btnLogin" type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="containerOver" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+
+<div class="slideshow-container">
+  <div class="mySlides fade">
+    <img src="/image1.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="/image2.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="/image3.jpg" style="width:100%">
+  </div>
+
+
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<div class="container"></div>
+<div class="text">Caption Text</div>
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+</div>
+
+<button class="btn"><i class="fa fa-download"></i> Download</button><br>
+
+<footer>
+  <div class="line"><br>
+    <p>Phone:123456789</p>
+    <p>Email: smt@email.com</p>
+
+  </div>
+</footer>
+<script>
+  let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+
+</script>
+</body>
+</html>
