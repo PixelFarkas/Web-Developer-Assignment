@@ -1,8 +1,11 @@
 const http = require('http');
-const fs = require('fs');
 const path = require('path');
+const fs = require('fs');
 const hostname = 'localhost';
 const port = 3000;
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
 
 const server = http.createServer((req, res) => {
   //console.log(`Request for ${req.url} received.`);
@@ -19,6 +22,7 @@ const server = http.createServer((req, res) => {
     const contentTypeMap = {
       '.html': 'text/html',
       '.css': 'text/css',
+      '.txt': 'text/html',
       '.js': 'text/javascript',
       '.png': 'image/png',
       '.jpg': 'image/jpeg',
@@ -45,6 +49,26 @@ const server = http.createServer((req, res) => {
     });
   }
 });
+
+
+app.set('view engine', 'html');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
+
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  fs.readFile('users.txt', 'utf8', (err, data) => {
+    if (err) throw err;
+    const users = data.split('\n').map(line => line.split(','));
+    const foundUser = users.find(user => user[0] === username && user[1] === password);
+    if (foundUser) {
+      res.render('welcome', { username: foundUser[0] });
+    } else {
+      res.render('error');
+    }
+  });
+});
+
 
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);

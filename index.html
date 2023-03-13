@@ -4,13 +4,12 @@
   <meta charset="utf-8">
   <title></title>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="./style.css">
-  <script src="./login.js"></script>
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
   <div class="line">
-    <img src="/logo.png">
+    <img src="/static/logo.png">
   </div>
   <span class="menubutton" onclick="openNav()">&#9776; </span>
   <div id="mySidenav" class="sidenav">
@@ -27,7 +26,7 @@
   <span onclick="document.getElementById('id01').style.display='none'"
 class="close" title="Close Modal">&times;</span>
 
-  <form id="login-form" class="modal-content animate">
+  <form id="login-form" class="modal-content animate" action="/login" method="POST">
 
     <div class="containerOver">
       <label for="uname"><b>Username</b></label>
@@ -52,15 +51,15 @@ class="close" title="Close Modal">&times;</span>
 
 <div class="slideshow-container">
   <div class="mySlides fade">
-    <img src="/image1.jpg" style="width:100%">
+    <img src="/static/image1.jpg" style="width:100%">
   </div>
 
   <div class="mySlides fade">
-    <img src="/image2.jpg" style="width:100%">
+    <img src="/static/image2.jpg" style="width:100%">
   </div>
 
   <div class="mySlides fade">
-    <img src="/image3.jpg" style="width:100%">
+    <img src="/static/image3.jpg" style="width:100%">
   </div>
 
 
@@ -119,6 +118,7 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
+
 
 </script>
 
